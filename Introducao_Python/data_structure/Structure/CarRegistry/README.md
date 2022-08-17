@@ -22,3 +22,11 @@ A estrutura deve conter os métodos de:
 ** Challenge **
     - Implementar modelo organizacional por Marcas
     - Implementar dicionário de quantidades de carros por Marcas
+
+"""
+Observações:
+
+Utilizar os dois underlines antes da variável indica privação dela dentro da classe
+
+elif X if/else: Quanto utilizamos "elif" o sistema entende ele como um "Swich" caso o primeiro caso seja verdadeiro ele não testará os próximos. Diferentemente, utilizando um concatenado de "if/else" os testes serão feitos em sequência assim como a disposição do código.
+"""
