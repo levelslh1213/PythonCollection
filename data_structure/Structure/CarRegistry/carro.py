@@ -72,7 +72,7 @@ class car:
         if self.__quilometragem == 0:
             return "Novo"
         elif self.__quilometragem <= 20000:
-            return "Semi-Novo"
+            return "Seminovo"
         elif self.__quilometragem > 20000:
             return "Usado"
 
