@@ -1,5 +1,5 @@
-from Introducao_Python.data_structure.Structure.CarRegistry.double_linked_list import double_linked_list
-from Introducao_Python.data_structure.Structure.CarRegistry.carro import car
+from data_structure.Structure.CarRegistry.double_linked_list import double_linked_list
+from data_structure.Structure.CarRegistry.carro import car
 
 double_list = double_linked_list()
 array = ['ford', 'chevrolet', 'kia', 'hyundai', 'audi']

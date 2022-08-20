@@ -121,3 +121,6 @@ class double_linked_list:
                         -> {aux.marca}/{aux.modelo}
                         -> {aux.situacao}""")
             aux = aux.next
+
+    def get_values_to_dict(self):
+        return 0
