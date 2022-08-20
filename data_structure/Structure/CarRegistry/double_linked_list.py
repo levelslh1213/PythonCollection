@@ -1,3 +1,4 @@
+from base64 import encode
 from email import header
 from lib2to3.pytree import Node
 from .carro import car
@@ -6,7 +7,7 @@ from .carro import car
 class double_linked_list:
     def __init__(self):
         self.__head = None
-        self.size = 0
+        self.__size = 1
 
     def insert_element(self, node: car):
         if self.__head == None:
@@ -122,5 +123,47 @@ class double_linked_list:
                         -> {aux.situacao}""")
             aux = aux.next
 
-    def get_values_to_dict(self):
-        return 0
+    def get_values_to_external_font(self, filtro = None):
+        if self.__size == 0:
+            raise ValueError("Seu mula, vou nem falar nada...")
+        else:
+            self.__create_data_font(filtro)
+
+    def __create_data_font(self, filtro = None):
+        import pandas as pd
+        tabela = {
+            "id" : [ ],
+            "marca" : [ ],
+            "modelo" : [ ],
+            "ano" : [ ],
+            "valor" : [ ],
+            "quilometragem" : [ ],
+            "observacao" : [ ]
+        }
+        aux = self.__head.next
+        tabela["id"].append(self.__head.id)
+        tabela["marca"].append(self.__head.marca)
+        tabela["modelo"].append(self.__head.modelo)
+        tabela["ano"].append(self.__head.ano)
+        tabela["valor"].append(self.__head.valor)
+        tabela["quilometragem"].append(self.__head.quilometragem)
+        tabela["observacao"].append(self.__head.observacao)
+
+        while(aux != self.__head):
+            tabela["id"].append(aux.id)
+            tabela["marca"].append(aux.marca)
+            tabela["modelo"].append(aux.modelo)
+            tabela["ano"].append(aux.ano)
+            tabela["valor"].append(aux.valor)
+            tabela["quilometragem"].append(aux.quilometragem)
+            tabela["observacao"].append(aux.observacao)
+            aux = aux.next
+
+        print(tabela)
+        df_tabela = pd.DataFrame(tabela)
+        if filtro != None:
+            df_tabela = df_tabela[df_tabela["marca"] == filtro]
+        print(df_tabela)
+        nome_arquivo = input("Digite o nome do arquivo:")
+        df_tabela.to_csv(f"data_structure\Exports\{nome_arquivo}.csv", ";", index=False, encoding="UTF-8")
+
