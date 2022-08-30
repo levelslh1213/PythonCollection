@@ -9,18 +9,18 @@ Carros devem ter:
     - Quilômetros Rodados
 
 A estrutura deve conter os métodos de:
-    - Inserção
-    - Visualização
-    - Visualização por Marca
-    - Visualização por Id
-    - Visualização por preço ("Maior que", "Menor que" e "Entre")
-    - Visualização por novos e Seminovos;
+    - Inserção --DONE
+    - Visualização --DONE
+    - Visualização por Marca --DONE
+    - Visualização por Id --DONE
+    - Visualização por preço ("Maior que", "Menor que" e "Entre") --DONE
+    - Visualização por novos e Seminovos; --DONE
     - Exclusão/Venda
     - Alteração
     - Reajuste de valor Anual
 
 ** Challenge **
-    - Implementar modelo organizacional por Marcas
+    - Implementar modelo organizacional por Marcas --DONE
         ** criar um propriedade de marcas da lista para facilitar
 
     - Implementar dicionário de quantidades de carros por Marcas

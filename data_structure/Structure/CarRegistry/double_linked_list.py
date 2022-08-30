@@ -1,6 +1,7 @@
 from base64 import encode
 from email import header
 from lib2to3.pytree import Node
+from multiprocessing.resource_sharer import stop
 from .carro import car
 
 
@@ -115,7 +116,7 @@ class double_linked_list:
                     -> {self.__head.situacao}""")
 
         aux = self.__head.next
-        while(aux != self.__head):
+        while (aux != self.__head):
             if aux.situacao == situation:
                 print(f"""
                         Carro: {aux.id}
@@ -123,22 +124,22 @@ class double_linked_list:
                         -> {aux.situacao}""")
             aux = aux.next
 
-    def get_values_to_external_font(self, filtro = None):
+    def get_values_to_external_font(self, filtro=None):
         if self.__size == 0:
             raise ValueError("Seu mula, vou nem falar nada...")
         else:
             self.__create_data_font(filtro)
 
-    def __create_data_font(self, filtro = None):
+    def __create_data_font(self, filtro=None):
         import pandas as pd
         tabela = {
-            "id" : [ ],
-            "marca" : [ ],
-            "modelo" : [ ],
-            "ano" : [ ],
-            "valor" : [ ],
-            "quilometragem" : [ ],
-            "observacao" : [ ]
+            "id": [],
+            "marca": [],
+            "modelo": [],
+            "ano": [],
+            "valor": [],
+            "quilometragem": [],
+            "observacao": []
         }
         aux = self.__head.next
         tabela["id"].append(self.__head.id)
@@ -149,7 +150,7 @@ class double_linked_list:
         tabela["quilometragem"].append(self.__head.quilometragem)
         tabela["observacao"].append(self.__head.observacao)
 
-        while(aux != self.__head):
+        while (aux != self.__head):
             tabela["id"].append(aux.id)
             tabela["marca"].append(aux.marca)
             tabela["modelo"].append(aux.modelo)
@@ -165,5 +166,64 @@ class double_linked_list:
             df_tabela = df_tabela[df_tabela["marca"] == filtro]
         print(df_tabela)
         nome_arquivo = input("Digite o nome do arquivo:")
-        df_tabela.to_csv(f"data_structure\Exports\{nome_arquivo}.csv", ";", index=False, encoding="UTF-8")
+        df_tabela.to_csv(
+            f"data_structure\Exports\{nome_arquivo}.csv", ";", index=False, encoding="UTF-8")
 
+
+    """
+    # insert organized elements with recursivity
+    def insert_organized_element(self, node: car):
+        aux = self.__find_last_element(node.marca)
+        if aux == 0:
+            self.__insert_organized_node(self.__head.prev, node)
+        else:
+            self.__insert_organized_node(aux, node)
+
+    def __find_last_element(self,  marca: str, root: car = None):
+        if root == self.__head:
+            return 0
+        else:
+            root = self.__head if root == None else root
+
+            if root.marca != marca:
+                return self.find_last_element(marca, root.next)
+            else:
+                aux = root.next
+                if aux.marca == marca:
+                    return self.find_last_element(marca, root.next)
+                else:
+                    return root
+
+    def __insert_organized_node(self, aux: car, node: car):
+        if aux.next == None:
+            node.next = aux
+            node.prev = aux
+            aux.next = node
+            aux.prev = node
+        else:
+            node.prev = aux
+            node.next = aux.next
+            aux.next.prev = node
+            aux.next = node
+
+    """
+
+    def insert_organized_element(self, node: car):
+
+        if self.__head == None:
+            self.__head = node
+        else:
+            aux = self.__head            
+            if self.__head.next == None:
+                node.next = aux
+                node.prev = aux
+                aux.next = node
+                aux.prev = node    
+            else:
+                aux = self.__head.prev
+                while(aux != self.__head and aux.marca != node.marca):
+                    aux = aux.next
+                node.next = aux.next
+                node.prev = aux
+                aux.next.prev = node
+                aux.next = node
