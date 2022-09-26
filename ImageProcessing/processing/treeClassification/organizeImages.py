@@ -7,6 +7,15 @@ import shutil #biblioteca do sistema operacional
 import cv2 #biblioteca do OpenCV
 import numpy as np
 
+class ModelTreeClassification:
+    def __init__(self):
+        self.__memoria = {}
+    
+    def fit(self):
+        return
+        
+            
+
 def getMaxValue(hist_teste:array):
     maxValue = 0
     color = 0
