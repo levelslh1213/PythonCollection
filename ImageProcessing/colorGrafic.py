@@ -22,7 +22,7 @@ plt.show
 
 
 {
-    "Alunos": ["Paulo Leonardo da Silva Paes", "Guilherme Farias Garcia"]
+    "Alunos": ["Paulo Leonardo da Silva Paes", "Guilherme Farias Garcia"],
     "Questão1": "A normalização do histograma é feita por um calculo do valor da ferquencia pela quantidade de pixels. Normalizar representa achar a probabilidade de um determinado tom de cinza aparecer numa imagem.",
     "Questão1": "Um histograma apresenta niveis de brilho e contras te das imagens, fazendo a normalização se as intensidades de brilho e constraste a imagens melhor vizualizavel.",
 }

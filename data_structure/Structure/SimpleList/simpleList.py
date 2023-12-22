@@ -1,5 +1,4 @@
-from .node import node
-
+from node import *
 
 class linear_list:
     def __init__(self):
